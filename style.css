@@ -2,5 +2,13 @@
     
 }
 .catalogo{
-
+    
+}
+article{
+    background-color: bisque;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border: 10px;
+    border-radius: 30px;
 }
