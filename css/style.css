@@ -91,9 +91,10 @@ button{
     padding: 15px;
 }
 
-button :hover{
+button:hover{
     color: #14F3C1;
 }
+
 .registro_form{
     align-items: center;
     text-align: center;
