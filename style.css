@@ -43,4 +43,26 @@ footer{
 /*Catalogo */
 .catalogo{
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.targeta{
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.targeta h2{
+    margin-top: 0;
+    font-size: 1.1rem;
+}
+
+.targeta a{
+    color: aqua;
+    text-decoration: none;
+}
+
+.targeta a:hover{
+    color: blueviolet;
 }
