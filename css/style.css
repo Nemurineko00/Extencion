@@ -5,7 +5,7 @@ body{
     margin: 0;
     font-family: 'Courier New', Courier, monospace;
     color: #1f1f1f;
-    background-color: #f9fafb;
+    background-color: #537888;
 }
  
 header{
@@ -36,13 +36,14 @@ footer{
     display: grid;
     grid-template-columns: repeat(3,1fr);/*Mte tres columnas por fila*/
     gap: 1rem;
+    background-color: #537888;
 }
  
 .tarjeta{
-    background-color: #ffffff;
-    border:1px solid #e5e7eb;
+    background-color: #1f1f1f;
     border-radius: 0.5rem;
     padding: 1rem;
+    text-align: center;
 }
  
 .tarjeta h2{
@@ -56,6 +57,53 @@ footer{
 /*hover sirve para cuando pasas el mouse en un elemento grafico*/
 .tarjeta a:hover{
     text-decoration: underline;
+    color: #14F3C1;
 }
- 
- 
+.container{
+    text-align: center;
+    border-radius: 2rem;
+    padding: 5px;  
+    margin: 2px;
+}
+h1{
+    color: #5ED177;
+}
+p{
+    color: #14F3C1;
+}
+td{
+    color: #14F3C1;
+    padding: 140px;
+}
+th{
+    color: #5ED177;
+}
+table{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+button{
+    background-color: #1f1f1f;
+    color: #5ED177;
+    border-radius: 1rem;
+    border: 2px solid #1f1f1f;
+    padding: 15px;
+}
+
+button :hover{
+    color: #14F3C1;
+}
+.registro_form{
+    align-items: center;
+    text-align: center;
+}
+
+input{
+    border-radius: 5px;
+    border: #ffffff;
+}
+
+.potrocolor{
+    color: #1f1f1f;
+}
