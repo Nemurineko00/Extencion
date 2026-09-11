@@ -12,3 +12,35 @@ article{
     border: 10px;
     border-radius: 30px;
 }
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    color: bisque;
+}
+header{
+    background-color: azure;
+    padding: 1rem;
+    color: aqua;
+    text-align: center;
+}
+header a{
+    color: blanchedalmond;
+}
+main{
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+footer{
+    text-align: center;
+    padding: 1rem;
+    color: black;
+    font-size: 0.875rem;
+}
+/*Catalogo */
+.catalogo{
+    display: grid;
+}
