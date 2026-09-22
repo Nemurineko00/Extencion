@@ -23,7 +23,6 @@ main{
     max-width: 960px;
     margin: 2rem auto;
     padding: 1.5rem;
-    align-items: center;
 }
 footer{
     text-align: center;
@@ -31,15 +30,7 @@ footer{
     color: #6b7280;
     font-size: 0.875rem;
 }
-
-form{
-    align-items: center;
-}
 /*Catalogo de talleres */
-
-.formulario-registro{
-    align-items: center;
-}
  
 .catalogo{
     display: grid;
@@ -84,19 +75,20 @@ p{
 td{
     color: #14F3C1;
     padding: 10px;
-    margin: 50px;
+    vertical-align: middle;
+    text-align: center;
+    margin: 300px;
 }
 th{
     color: #5ED177;
-    vertical-align: middle;
-    padding: 10px;
+
 }
 table{
     text-align: center;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    border-collapse: collapse;
+    table-layout: center;
+    margin: 30px;
 }
 button{
     background-color: #1f1f1f;
@@ -124,14 +116,8 @@ input{
     color: #1f1f1f;
 }
 
-.ejercicio{
+.centrado{
+    align-items: center;
     text-align: center;
-}
-
-.resultado{
-    display: block;
-    white-space: pre-line;
-    margin: 1rem auto;
-    padding: 1rem;
-    color: #14F3C1;
+    align-self: start;
 }
