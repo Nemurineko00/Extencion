@@ -53,11 +53,62 @@
 
             </form>
 
-            <output class="resultado" id="resultado-arreglo" for="form-arreglo" ></output>
+            <output class="resultado" id="resultado-arreglo" for="form-arreglos" ></output>
         </section>
+
+        <section class="ejercicio" aria-labelledby="titulo-objeto">
+
+            <h2 id="titulo-objeto">Manejo de los objetos JSON</h2>
+            <p>Edita taller y elije las operaciones que deceas editar</p>
+
+            <form id="form-objeto" action="form-objeto" class="formulario">
+
+                <div class="campo">
+                    <label for="obj-nombre">Nombre</label>
+                    <input type="text" name="obj-nombre" id="obj-nombre" value="Introduccion a python">
+                </div>
+
+                <div class="campo">
+                    <label for="obj-instructor">Instructor</label>
+                    <input type="text" name="obj-instructor" id="obj-instructor" value="Instructor Maria Lopez">
+                </div>
+
+                <div class="campo">
+                    <label for="obj-cupo">Cupo</label>
+                    <input type="number" name="obj-cupo" id="obj-cupo" min="0">
+                </div>
+
+                <div class="campo">
+                    <label for="obj-inscritos">Inscritos</label>
+                    <input type="number" name="obj-inscritos" id="obj-inscritos" value="25" min="0">
+                </div>
+
+                <div class="campo">
+                    <label for="operacion-objeto">Tipo de operacion</label>
+                    <select name="operacion-objeto" id="operacion-objeto">
+                        <option value="keys">Objec.Keys</option>
+                        <option value="values">Object.values</option>
+                        <option value="entries">Object.entries</option>
+                        <option value="stringify">JSON cadena</option>
+                        <option value="roundtrip">Ida y vuelta cadena JSON</option>
+                    </select>
+                </div>
+
+                <button type="submit">Ejecutar opciones</button>
+
+            </form>
+
+            <output class="resultado" id="resultado-objeto" for="form-objeto"></output>
+
+        </section>
+
+      <iframe width="451" height="802" src="https://www.youtube.com/embed/Qn8ogVTtuA8" title="LA CALABAZA #viral #shorts #kitty #viralvideo #kittens #funny #fyp #cat #cute #views" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
     </main>
 
     <script src="./js/app.js" ></script>
+
+    
     
 </body>
 </html>
