@@ -1,6 +1,6 @@
 import Menu from "../componets/menu";
 
-import "../styles/globals.css";
+import "../Style/stylE.css";
 
 export default function App({ Component, pageProps }) {
   return (

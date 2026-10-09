@@ -12,7 +12,6 @@
   },
   "license": "ISC",
   "author": "Nemurineko00",
-  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
