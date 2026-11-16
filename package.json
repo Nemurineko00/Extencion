@@ -1,0 +1,23 @@
+{
+  "name": "primerproyceto",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Nemurineko00/Extencion#readme",
+  "bugs": {
+    "url": "https://github.com/Nemurineko00/Extencion/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nemurineko00/Extencion.git"
+  },
+  "license": "ISC",
+  "author": "Nemurineko00",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx" 
+  }
+}
