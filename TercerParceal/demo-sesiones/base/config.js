@@ -19,6 +19,16 @@ module.exports = {
   // 'lax': la cookie no viaja en peticiones POST que vienen de otros sitios. 'strict' es más estricto.
   sameSite: 'lax',
 
+  secure: false,
+
   // true: al iniciar sesión el servidor cambia el id de la sesión (protege contra la fijación de sesión).
   regenerarAlEntrar: true,
+
+  //Para el uso de jwt nesesitaremos varialbles medidas en segundos
+
+  jwtExpiraSeg : 5*60,
+
+  //Tenemos que identificar si es valido o no, si no lo tenemos que revocar en otra sesion
+
+  jwtRevocar : true
 };

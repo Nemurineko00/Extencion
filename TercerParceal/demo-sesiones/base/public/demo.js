@@ -1,7 +1,8 @@
 const $ = (id) => document.getElementById(id);
 
-async function llamar(metodo, url, cuerpo) {
+async function llamar(metodo, url, cuerpo, token) {
   const opciones = { method: metodo, headers: {} };
+  if (token) opciones.headers.Authorization = `Bearer ${token}`;
   if (cuerpo) {
     opciones.headers['Content-Type'] = 'application/json';
     opciones.body = JSON.stringify(cuerpo);
@@ -87,6 +88,43 @@ for (const boton of document.querySelectorAll('[data-url]')) {
     await refrescarTodo();
   });
 }
+
+let tokenJWT = null;
+
+function mostrarToken() {
+  $('jwt-token').textContent = tokenJWT || '(sin token)';
+  if (!tokenJWT) {
+    $('jwt-payload').textContent = '—';
+    return;
+  }
+  const payload = JSON.parse(atob(tokenJWT.split('.')[1].replace(/-/g, '+').replace(/_/g, '/')));
+  payload.exp_legible = new Date(payload.exp * 1000).toLocaleTimeString();
+  $('jwt-payload').textContent = JSON.stringify(payload, null, 2);
+}
+
+$('btn-jwt-login').addEventListener('click', async () => {
+  const cuerpo = { usuario: $('usuario').value, contrasena: $('contrasena').value };
+  const { status, datos } = await llamar('POST', '/api/jwt/login', cuerpo);
+  anotar('POST', '/api/jwt/login', status, datos);
+  if (status === 200) tokenJWT = datos.token;
+  mostrarToken();
+});
+
+for (const boton of document.querySelectorAll('[data-jwt]')) {
+  boton.addEventListener('click', async () => {
+    const metodo = boton.dataset.jwt;
+    const { url } = boton.dataset;
+    const { status, datos } = await llamar(metodo, url, null, tokenJWT);
+    anotar(metodo, url, status, datos);
+    if (url === '/api/jwt/refresh' && status === 200) tokenJWT = datos.token;
+    mostrarToken();
+  });
+}
+
+$('btn-jwt-olvidar').addEventListener('click', () => {
+  tokenJWT = null;
+  mostrarToken();
+});
 
 $('btn-refrescar').addEventListener('click', refrescarTodo);
 $('btn-sesiones').addEventListener('click', refrescarSesiones);
