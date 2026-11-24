@@ -90,7 +90,7 @@ function crearApp(config, pool) {
 
   // 403: "sé quién eres, pero no tienes permiso".
   function requiereRol(rol) {
-    // Paso 3 (en clase)
+    // Paso 3 (en clase)  
     return (req, res, next) => {
       if (req.session.usuario.rol !== rol) {
         return res.status(403).json({ error: `Eres ${req.session.usuario.usuario}, pero esta ruta es solo para ${rol}` });
