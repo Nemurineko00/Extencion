@@ -83,6 +83,18 @@
       <h2>6 · Configuración actual (<code>config.js</code>)</h2>
       <pre id="config">…</pre>
     </section>
+
+    <section class="tarjeta">
+      <h2>7 · Lista negra de tokens</h2>
+      <p id="estado-lista-negra" class="estado-almacen">…</p>
+      <p class="detalle">Tokens que ya no sirven aunque su firma sea válida (después de <code>logout</code> o <code>refresh</code>).
+        En Workbench: <code>SELECT * FROM demo_sesiones.tokens_revocados;</code></p>
+      <table>
+        <thead><tr><th>Token (jti)</th><th>Usuario</th><th>Expiraba</th><th>Revocado</th></tr></thead>
+        <tbody id="tabla-tokens"><tr><td colspan="4">(lista negra vacía)</td></tr></tbody>
+      </table>
+      <button id="btn-tokens" type="button">Actualizar lista negra</button>
+    </section>
   </main>
 
   <script src="demo.js"></script>

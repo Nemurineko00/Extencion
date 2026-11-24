@@ -63,6 +63,34 @@ async function refrescarSesiones() {
   }
 }
 
+async function refrescarListaNegra() {
+  const { status, datos } = await llamar('GET', '/api/diagnostico/tokens');
+  const cuerpo = $('tabla-tokens');
+  cuerpo.innerHTML = '';
+  if (status !== 200 || !datos) {
+    cuerpo.innerHTML = '<tr><td colspan="4">(no se pudo leer la lista negra)</td></tr>';
+    return;
+  }
+  const lista = datos.revocados || [];
+  $('estado-lista-negra').textContent = `${lista.length} token(s) revocado(s) en MySQL, tabla tokens_revocados.`;
+  if (lista.length === 0) {
+    cuerpo.innerHTML = '<tr><td colspan="4">(lista negra vacía)</td></tr>';
+    return;
+  }
+  const jtiActual = tokenJWT ? JSON.parse(atob(tokenJWT.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).jti : null;
+  for (const t of lista) {
+    const fila = document.createElement('tr');
+    if (t.jti === jtiActual) fila.className = 'tuya';
+    const hora = (fecha) => (fecha ? new Date(fecha).toLocaleTimeString() : '—');
+    for (const valor of [`${t.jti.slice(0, 8)}…` + (t.jti === jtiActual ? ' (el tuyo)' : ''), t.usuario, hora(t.expira), hora(t.revocado_en)]) {
+      const celda = document.createElement('td');
+      celda.textContent = valor;
+      fila.appendChild(celda);
+    }
+    cuerpo.appendChild(fila);
+  }
+}
+
 async function refrescarTodo() {
   await refrescarEstado();
   await refrescarSesiones();
@@ -80,7 +108,7 @@ $('form-login').addEventListener('submit', async (evento) => {
   await refrescarTodo();
 });
 
-for (const boton of document.querySelectorAll('[data-url]')) {
+for (const boton of document.querySelectorAll('[data-metodo]')) {
   boton.addEventListener('click', async () => {
     const { metodo, url } = boton.dataset;
     const { status, datos } = await llamar(metodo, url);
@@ -118,6 +146,7 @@ for (const boton of document.querySelectorAll('[data-jwt]')) {
     anotar(metodo, url, status, datos);
     if (url === '/api/jwt/refresh' && status === 200) tokenJWT = datos.token;
     mostrarToken();
+    await refrescarListaNegra();
   });
 }
 
@@ -128,8 +157,13 @@ $('btn-jwt-olvidar').addEventListener('click', () => {
 
 $('btn-refrescar').addEventListener('click', refrescarTodo);
 $('btn-sesiones').addEventListener('click', refrescarSesiones);
+$('btn-tokens').addEventListener('click', refrescarListaNegra);
 
 llamar('GET', '/api/config').then(({ datos }) => {
   $('config').textContent = JSON.stringify(datos, null, 2);
+  if (datos && datos.jwtRevocar === false) {
+    $('estado-lista-negra').textContent = 'jwtRevocar está en false: el servidor no guarda nada y el logout no revoca el token.';
+  }
 });
+refrescarListaNegra();
 refrescarTodo();
